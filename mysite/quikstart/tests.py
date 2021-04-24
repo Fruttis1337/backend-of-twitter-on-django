@@ -64,7 +64,7 @@ class FollowTestCase(TestCase):
         self.assertEqual(Follow.objects.count(), 1)
 
     # TODO: Написать проверку на duplicate и на подписку на самого себя
-    #       дописать сами эти тесты 
+    #       дописать сами эти тесты
     def test_new_follow_correct(self):
         self.client.force_login(self.user1)
         response = self.client.post(f'/v1/follow/{self.user3.username}/')
