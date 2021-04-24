@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.urls import include, path
 from rest_framework_extensions.routers import ExtendedDefaultRouter
 from mysite.quikstart import views
+from mysite.quikstart.views import redirection
 from mysite.router import SwitchDetailRouter, RouterForTweets
 
 tweets_router = RouterForTweets()
@@ -24,6 +25,7 @@ tweets_router.register(f'tweets', views.TweetsViewSet)
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
+    path('', redirection()),
     path('v1/', include(switch_router.urls)),
     path('v1/', include(router.urls)),
     path('admin/', admin.site.urls),
