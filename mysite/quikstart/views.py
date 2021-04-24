@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework.viewsets import GenericViewSet
+from django.shortcuts import redirect
 
 from .models import Dog, Tweets, Follow
 from rest_framework import viewsets, mixins
@@ -85,3 +86,8 @@ class UserFollowsViewSet(viewsets.ReadOnlyModelViewSet):
 
     def get_queryset(self):
         return self.queryset.filter(follower__username=self.kwargs['parent_lookup_username'])
+
+
+def redirect_view(request):
+    response = redirect('/v1/')
+    return response
