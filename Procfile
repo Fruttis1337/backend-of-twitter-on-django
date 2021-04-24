@@ -1,1 +1,1 @@
-web: python manage.py migrate && quikstart.wsgi
+web: python manage.py migrate && gunicorn quikstart.wsgi
